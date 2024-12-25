@@ -26,6 +26,7 @@ namespace Data.Model
         public string? LastUpdated { get; set; }
         public string? ContentVi { get; set; }
         public string? ContentEn { get; set; }
+        public string? ContactInfo0 { get; set; }
         public string? ContactInfo1 { get; set; }
         public string? ContactInfo2 { get; set; }
         public string? ContactInfo3 { get; set; }

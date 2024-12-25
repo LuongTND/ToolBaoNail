@@ -5,8 +5,95 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToolBaoNail.ViewController"
         mc:Ignorable="d"
-        Title="CrawlControls" Height="450" Width="800">
+        Title="CrawlControls" Height="570" Width="1000">
     <Grid>
+        <!-- Nút Start để bắt đầu Crawl thị trường US -->
+        <Button x:Name="ButtonStart_US_StateInfo"
+         Content="Crawl State"
+         HorizontalAlignment="Left"
+         VerticalAlignment="Top"
+         Height="33"
+         Width="96"
+         Margin="532,126,0,0"
+         Click="Start_US_1"/>
+
+        <Button x:Name="ButtonStart_US_AdInfo"
+         Content="Crawl AdInfo"
+         HorizontalAlignment="Left"
+         VerticalAlignment="Top"
+         Height="33"
+         Width="96"
+         Margin="682,126,0,0"
+         Click="Start_US_2"/>
+
+        <Button x:Name="ButtonStart_US_AdDetailInfo"
+         Content="Crawl AdDetailInfo"
+         HorizontalAlignment="Left"
+         VerticalAlignment="Top"
+         Height="33"
+         Width="105"
+         Margin="832,126,0,0"
+         Click="Start_US_3"/>
+
+
+        <!-- Nút Start để bắt đầu Crawl thị trường CA -->
+
+        <Button x:Name="ButtonStart_CA_StateInfo" 
+                Content="Crawl State" 
+                HorizontalAlignment="Left" 
+                Margin="31,126,0,0" 
+                VerticalAlignment="Top" 
+                Height="33" Width="96" 
+                Click="Start_CA_1"/>
+
+        <Button x:Name="ButtonStart_CA_AdInfo"
+         Content="Crawl AdInfo"
+         HorizontalAlignment="Left"
+         VerticalAlignment="Top"
+         Height="33"
+         Width="96"
+         Margin="178,126,0,0"
+         Click="Start_CA_2"/>
+
+        <Button x:Name="ButtonStart_CA_AdDetailInfo"
+         Content="Crawl AdDetailInfo"
+         HorizontalAlignment="Left"
+         VerticalAlignment="Top"
+         Height="33"
+         Width="105"
+         Margin="321,126,0,0"
+         Click="Start_CA_3"/>
+
+        <!-- Nút Get Data để tải dữ liệu của hàng -->
+
+        <ComboBox x:Name="RegionComboBox"
+          HorizontalAlignment="Left"
+          VerticalAlignment="Top"
+          Width="100"
+          Margin="56,310,0,0">
+            <ComboBoxItem Content="USA" />
+            <ComboBoxItem Content="CANADA" />
+        </ComboBox>
         
+        <Button Content="Get Data"
+         HorizontalAlignment="Left"
+         VerticalAlignment="Top"
+         Height="33"
+         Width="96"
+         Margin="56,357,0,0"
+         Click="GetData" />
+
+        <!-- DataGrid để hiển thị dữ liệu của hàng -->
+        <DataGrid x:Name="HistoryDataGrid"
+           Margin="195,215,35,23"
+           AutoGenerateColumns="True"
+           IsReadOnly="True"/>
+
+
+        <Label Content="BAONAIL" Foreground="Orange" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold"/>
+        <Label Content="Thị trường CANADA" HorizontalAlignment="Left" Margin="21,83,0,0" VerticalAlignment="Top"/>
+        <Label Content="Thị trường USA" HorizontalAlignment="Left" Margin="520,83,0,0" VerticalAlignment="Top"/>
+        <!--<Rectangle HorizontalAlignment="Left" Height="100" Margin="500,84,0,0" Stroke="Orange" VerticalAlignment="Top" Width="465"/>
+        <Rectangle HorizontalAlignment="Left" Height="100" Margin="21,83,0,0" Stroke="Orange" VerticalAlignment="Top" Width="465"/>-->
     </Grid>
 </Window>

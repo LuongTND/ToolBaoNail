@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics;
 using System.Windows;
@@ -15,21 +16,44 @@ namespace ToolBaoNail
     {
         private ServiceProvider _serviceProvider;
 
+        //public App()
+        //{
+        //    // Đăng ký các dịch vụ và ViewModels
+        //    var services = new ServiceCollection();
+
+        //    // Đăng ký DbContext với chuỗi kết nối từ appsettings.json
+        //    services.AddDbContext<ApplicationDbContext>(options =>
+        //        options.UseSqlServer("Server=localhost;Database=BaoNail_BackEnd_API_v2;Trusted_Connection=True;TrustServerCertificate=True"));
+
+        //    services.AddScoped<IStateScraperService, StateScraperService>();  // Đăng ký dịch vụ lấy dữ liệu
+        //    //services.AddScoped<ApplicationDBContext>();  // Đăng ký ApplicationDBContext
+        //    services.AddScoped<CrawlControlsViewModel>();  // Đăng ký ViewModel
+        //    services.AddScoped<CrawlControls>();  // Đăng ký cửa sổ chính
+
+        //    _serviceProvider = services.BuildServiceProvider();
+        //}
+
         public App()
         {
-            // Đăng ký các dịch vụ và ViewModels
-            var services = new ServiceCollection();
+            var serviceCollection = new ServiceCollection();
+            ConfigureServices(serviceCollection);
+            _serviceProvider = serviceCollection.BuildServiceProvider();
+        }
 
-            // Đăng ký DbContext với chuỗi kết nối từ appsettings.json
-            services.AddDbContext<ApplicationDBContext>(options =>
+        private void ConfigureServices(IServiceCollection services)
+        {
+            // Đăng ký ApplicationDBContext
+            services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer("Server=localhost;Database=BaoNail_BackEnd_API_v2;Trusted_Connection=True;TrustServerCertificate=True"));
 
-            services.AddScoped<IStateScraperService, StateScraperService>();  // Đăng ký dịch vụ lấy dữ liệu
-            //services.AddScoped<ApplicationDBContext>();  // Đăng ký ApplicationDBContext
-            services.AddScoped<CrawlControlsViewModel>();  // Đăng ký ViewModel
-            services.AddSingleton<CrawlControls>();  // Đăng ký cửa sổ chính
+            // Đăng ký HttpClient
+            services.AddHttpClient();
 
-            _serviceProvider = services.BuildServiceProvider();
+            // Đăng ký StateScraperService
+            services.AddTransient<IStateScraperService, StateScraperService>();
+
+            // Đăng ký CrawlControls
+            services.AddTransient<CrawlControls>();
         }
 
         private void Application_Startup(object sender, StartupEventArgs e)

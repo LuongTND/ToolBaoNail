@@ -8,17 +8,13 @@ using System.Threading.Tasks;
 
 namespace ToolBaoNail.DTO
 {
-    public class AdDetailInfo
+    public class AdDetailInfoDTO
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AdDetailInfoId { get; set; }
 
         public int StateInfoId { get; set; }
-        public virtual StateInfo? StateInfo { get; set; }
 
         public int AdInfoId { get; set; }
-        public AdInfo? AdInfo { get; set; }
 
         public string? TitleVi { get; set; }
         public string? TitleEn { get; set; }

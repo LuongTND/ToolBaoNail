@@ -8,24 +8,20 @@ using System.Threading.Tasks;
 
 namespace ToolBaoNail.DTO
 {
-    public class AdInfo
+    public class AdInfoDTO
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int AdInfoId { get; set; }
 
-        public int StateInfoId { get; set; }
-        public virtual StateInfo? StateInfo { get; set; }
+        //public int AdInfoId { get; set; }
+
+        public int? StateInfoId { get; set; }
+  
 
         public string? StoreName { get; set; }
-        public string? StoreUrl { get; set; }
         public string? Location { get; set; }
         public string? State { get; set; }
         public string? AdTitle { get; set; }
         public string? AdMessage { get; set; }
         public string? AdId { get; set; }
-
-
-        public AdDetailInfo AdDetailInfo { get; set; }
+        public string? StoreUrl { get; set; }
     }
 }
